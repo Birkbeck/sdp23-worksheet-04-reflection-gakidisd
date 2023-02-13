@@ -21,8 +21,11 @@ public class DescribeClass {
             showClassHierarchy(c);
         }
 
-        System.out.println("\nBelow you see the modifiers of the class");
+
         checkClass(c);
+        showInterfaces(c);
+
+
 
 
     }
@@ -47,6 +50,7 @@ public class DescribeClass {
 
     public static void checkClass(Class<?> c){
         int mod = c.getModifiers();
+        System.out.println("\nBelow you see the modifiers of the class");
         boolean isPublic = Modifier.isPublic(mod);
         System.out.println("\t\tIs public: " + isPublic);
         boolean isFinal = Modifier.isFinal(mod);
@@ -56,5 +60,13 @@ public class DescribeClass {
         boolean isNative = Modifier.isNative(mod);
         System.out.println("\t\tIs native: " + isNative);
         System.out.println(c + " is " + Modifier.toString(mod));
+    }
+
+    public static void showInterfaces(Class<?> c){
+        Class<?>[] interfaces = c.getInterfaces();
+        System.out.println("\nThe interfaces of the class " + c.getName() + " are the below: ");
+        for (Class<?> intf : interfaces){
+            System.out.println("\t\t" + intf);
+        }
     }
 }
