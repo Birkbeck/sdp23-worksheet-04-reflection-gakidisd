@@ -64,10 +64,13 @@ public class DescribeClass {
     public static void showInterfaces(Class<?> c){
         Class<?>[] interfaces = c.getInterfaces();
         System.out.println("\nThe interfaces of the class " + c.getName() + " are the below:\n ");
+        int count = 1;
         for (Class<?> intf : interfaces){
+            System.out.println(count);
             System.out.println("\t\t" + intf);
             checkClass(intf);
             System.out.println();
+            count ++;
         }
 
 
