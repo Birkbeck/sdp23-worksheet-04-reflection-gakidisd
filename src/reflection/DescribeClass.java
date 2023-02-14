@@ -1,5 +1,7 @@
 package reflection;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Scanner;
 
@@ -10,20 +12,35 @@ public class DescribeClass {
 
         // TODO: implement the functionality for Question 1
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Give a class name:");
-        String className = scanner.nextLine();
-        Class<?> c = classNamePrinter(className);
 
-        System.out.println("Do you want to see the class hierarchy?(y/n)");
-        String hierarchy = scanner.nextLine();
-        if (hierarchy.toLowerCase().equals("y")){
-            System.out.println("Class hierarchy for " + c.getName());
-            showClassHierarchy(c);
+        while (true){
+            System.out.println("Give a class name. Press enter to stop searching for a class");
+            String className = scanner.nextLine();
+
+            if (className == ""){
+                break;
+            }
+
+            Class<?> c = classNamePrinter(className);
+            System.out.println("Do you want to see the class hierarchy?(y/n)");
+            String hierarchy = scanner.nextLine();
+            if (hierarchy.toLowerCase().equals("y")){
+                System.out.println("Class hierarchy for " + c.getName());
+                showClassHierarchy(c);
+            }
+            System.out.println("\nBelow you see the modifiers of the class");
+            checkClass(c);
+            showInterfaces(c);
+            showFields(c);
+            showMethods(c);
+
+
         }
 
-        System.out.println("\nBelow you see the modifiers of the class");
-        checkClass(c);
-        showInterfaces(c);
+
+
+
+
 
 
 
@@ -63,7 +80,7 @@ public class DescribeClass {
 
     public static void showInterfaces(Class<?> c){
         Class<?>[] interfaces = c.getInterfaces();
-        System.out.println("\nThe interfaces of the class " + c.getName() + " are the below:\n ");
+        System.out.println("\nThe interfaces of the class " + c.getName() + " are the below:");
         int count = 1;
         for (Class<?> intf : interfaces){
             System.out.println(count);
@@ -72,7 +89,21 @@ public class DescribeClass {
             System.out.println();
             count ++;
         }
+    }
 
+    public static void showFields(Class<?> c){
+        Field[] fields = c.getDeclaredFields();
+        System.out.println("\nThe fields of the class " + c.getName() + " are the below:");
+        for (Field field:fields){
+            System.out.println("\t\t"+field);
+        }
+    }
 
+    public static void showMethods(Class<?> c){
+        Method[] methods = c.getDeclaredMethods();
+        System.out.println("\nThe methods of the class " + c.getName() + " are the below:");
+        for (Method method:methods){
+            System.out.println("\t\t" + method);
+        }
     }
 }
