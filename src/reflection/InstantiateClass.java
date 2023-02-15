@@ -28,6 +28,7 @@ public class InstantiateClass {
 
         try {
             String c = createObject(className,params);
+            System.out.println(c.getClass().getName());
         }  catch (Exception e){
             e.printStackTrace(System.err);
         }
