@@ -10,6 +10,10 @@ public class StudentClass {
     private JButton f5;
 //    private String[] f6;
 
+    public StudentClass(int num){
+        f3 = num;
+    }
+
     public StudentClass(){
 
     }
