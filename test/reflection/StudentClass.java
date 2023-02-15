@@ -14,5 +14,16 @@ public class StudentClass {
 
     }
 
+    private static void met1(){
 
+    }
+
+    private static void met2(){
+
+    }
+
+    private static void met3() throws IllegalArgumentException
+    {
+
+    }
 }

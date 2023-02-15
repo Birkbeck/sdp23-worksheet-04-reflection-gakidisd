@@ -3,10 +3,8 @@ package reflection;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Autograder {
@@ -47,4 +45,31 @@ public class Autograder {
             Assertions.assertFalse(field.getType().isArray());
         }
     }
+
+
+    @Test
+    public void testHelpers(){
+        ArrayList<Method> helpers = new ArrayList<>();
+        Method[] methods = c.getDeclaredMethods();
+
+        for (Method method : methods){
+            int mod = method.getModifiers();
+            if (Modifier.isPrivate(mod) && Modifier.isStatic(mod)){
+                helpers.add(method);
+            }
+        }
+        Assertions.assertFalse(helpers.size() < 3);
+    }
+
+    @Test
+    public void testThrows(){
+        Method[] methods = c.getDeclaredMethods();
+        for (Method method: methods){
+            Assertions.assertFalse(method.getExceptionTypes().length > 0);
+        }
+    }
+
+
+
+
 }
