@@ -14,10 +14,11 @@ public class DescribeClass {
         Scanner scanner = new Scanner(System.in);
 
         while (true){
-            System.out.println("Give a class name. Press enter to stop searching for a class");
+            System.out.println("Give a class name. Press enter to stop searching for a class.");
             String className = scanner.nextLine();
 
             if (className == ""){
+                System.out.println("Bye!");
                 break;
             }
 
