@@ -69,6 +69,14 @@ public class Autograder {
         }
     }
 
+    @Test
+    public void testIntMethod(){
+        Method[] methods = c.getDeclaredMethods();
+        for (Method method: methods){
+            Assertions.assertFalse(method.getReturnType().getName() == "int");
+        }
+    }
+
 
 
 
