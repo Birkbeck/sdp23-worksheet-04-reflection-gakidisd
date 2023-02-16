@@ -34,18 +34,7 @@ public class DescribeClass {
             showInterfaces(c);
             showFields(c);
             showMethods(c);
-
-
         }
-
-
-
-
-
-
-
-
-
     }
 
     public static<T>  T classNamePrinter(String className) throws ClassNotFoundException {

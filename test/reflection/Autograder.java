@@ -33,7 +33,6 @@ public class Autograder {
         Field[] fields = c.getDeclaredFields();
         for (Field field : fields){
             Assertions.assertFalse(Modifier.isPublic(field.getModifiers()));
-
         }
     }
 
